@@ -2,4 +2,4 @@ This is a script that lets me make some questions to a LLM (Large Language Model
 
 After that, the mentioned string with the question and all the important related information is sent to the Mistral's API. The response of the LLM is written in `MistralResponse.txt`. 
 
-These files are placed within the project's directory.
+These files must be placed within the project's directory.
