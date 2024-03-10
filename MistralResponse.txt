@@ -1,0 +1,38 @@
+To add RSI and MACD as features, you need to calculate these indicators for each cryptocurrency and add them as new columns in your dataset. Here's a general idea of how you can do this:
+
+1. **Calculate RSI:**
+
+RSI (Relative Strength Index) is a momentum oscillator that measures the speed and change of price movements. You can calculate the RSI for each cryptocurrency using the following steps:
+
+- Calculate the gain or loss for each period (typically, daily).
+- Calculate the Average Gain and Average Loss over a specific period (typically, 14 periods).
+- Calculate the Relative Strength (RS) as the Average Gain / Average Loss.
+- Calculate the RSI as 100 - (100 / (1 + RS)).
+
+You can use the `TA-Lib` library in Python to calculate RSI. Here's an example of how you can do this:
+
+```python
+import talib
+
+# Assuming 'data' is a pandas DataFrame and 'Close' is the column with closing prices
+data['RSI'] = talib.RSI(data['Close'])
+```
+
+2. **Calculate MACD:**
+
+MACD (Moving Average Convergence Divergence) is a trend-following momentum indicator that shows the relationship between two moving averages of a security’s price. You can calculate the MACD for each cryptocurrency using the following steps:
+
+- Calculate the 12-day and 26-day Exponential Moving Averages (EMAs).
+- Subtract the 26-day EMA from the 12-day EMA to get the MACD line.
+- Calculate the 9-day EMA of the MACD line, known as the signal line.
+
+You can use the `TA-Lib` library in Python to calculate MACD. Here's an example of how you can do this:
+
+```python
+import talib
+
+# Assuming 'data' is a pandas DataFrame and 'Close' is the column with closing prices
+data['MACD'], data['signal'], data['hist'] = talib.MACD(data['Close'])
+```
+
+After calculating these indicators, you can add them as new columns to your dataset and use them as features in your model.
